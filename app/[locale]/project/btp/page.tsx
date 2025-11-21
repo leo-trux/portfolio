@@ -40,7 +40,7 @@ export default async function Page() {
                 <div className="flex flex-col mt-10">
                     <h2 className="text-3xl bold font-bold">{t('docs_title')}</h2>
                     <div className="flex flex-row w-full mt-3">
-                        <Button label="Github" icon="github" link="https://github.com/Slorader/BTP"/>
+                        <Button label="Github" icon="github" link="https://github.com/leo-trux/BTP"/>
                     </div>
                 </div>
                 <Footer/>

@@ -27,7 +27,7 @@ export default async function Home() {
                 <span className="text-[var(--main-color)]">{t('home.web_developer')}</span>
             </div>
             <div className="flex flex-row w-full mt-8 sm:mt-10">
-                <Button label="Github" icon="github" link="https://github.com/Slorader"/>
+                <Button label="Github" icon="github" link="https://github.com/leo-trux"/>
                 <Button label="Linkedin" icon="linkedin" link="https://www.linkedin.com/in/leo-trux/"/>
                 <Button label="CV" icon="cv" link={"/docs/truxleo_cv_" + locale + ".pdf"}/>
             </div>

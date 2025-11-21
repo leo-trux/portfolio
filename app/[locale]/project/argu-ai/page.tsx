@@ -45,7 +45,7 @@ export default async function Page() {
                 <div className="flex flex-col mt-10">
                     <h2 className="text-3xl bold font-bold">{t('docs_title')}</h2>
                     <div className="flex flex-row w-full mt-10">
-                        <Button label="Github" icon="github" link="https://github.com/Slorader/arguAi"/>
+                        <Button label="Github" icon="github" link="https://github.com/leo-trux/arguAi"/>
                         <Button label={t('argu_ai.intership_report')} icon="cv" link="/docs/rapport_trux_final.pdf"/>
                     </div>
                 </div>
