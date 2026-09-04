@@ -1,12 +1,30 @@
-import { getI18n } from "@/locales/server";
+import { getI18n, setStaticParamsLocale } from "@/locales/server";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/footer";
 import Button from "@/components/ui/button";
 import React from "react";
+import type {Metadata} from "next";
 
-export default async function Page() {
+type PageProps = {
+    params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({params}: PageProps): Promise<Metadata> {
+    const {locale} = await params;
+    setStaticParamsLocale(locale);
+    const t = await getI18n();
+
+    return {
+        title: "Argu Ai - Léo TRUX",
+        description: t("projects.argu_ai.description"),
+    };
+}
+
+export default async function Page({params}: PageProps) {
+    const {locale} = await params;
+    setStaticParamsLocale(locale);
     const t = await getI18n();
 
     return (

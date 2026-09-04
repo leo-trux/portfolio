@@ -1,24 +1,32 @@
 import Card from "@/components/ui/card";
 import { getI18n } from "@/locales/server";
+import { getR2ImageUrl } from "@/utils/constants";
 
 const ccsdImage = {
-    src: "/images/ccsd_logo.jpg",
+    src: getR2ImageUrl("logos/ccsd.jpg"),
     alt: "CCSD",
     width: 70,
     height: 20,
 };
 const rguImage = {
-    src: "/images/RGU.jpg",
+    src: getR2ImageUrl("logos/RGU.jpg"),
     alt: "RGU",
     width: 100,
     height: 10,
 };
 
 const lyonImage = {
-    src: "/images/UCBL-logo.png",
+    src: getR2ImageUrl("logos/but.png"),
     alt: "Lyon",
     width: 100,
     height: 10,
+};
+
+const cpeImage = {
+    src: getR2ImageUrl("logos/cpe.svg"),
+    alt: "CPE Lyon",
+    width: 100,
+    height: 43,
 };
 
 export default async function Career() {
@@ -51,6 +59,16 @@ export default async function Career() {
             </section>
             <section className="mb-10">
                 <h2 className="font-bold text-2xl mb-3">{t("studies.title")}</h2>
+                <Card
+                    label={t("studies.cpe.label")}
+                    link="https://www.cpe.fr/"
+                    title={t("studies.cpe.title")}
+                    image={cpeImage}
+                    organisation={t("studies.cpe.organisation")}
+                    date={t("studies.cpe.date")}
+                    localisation={t("studies.cpe.location")}
+                    description={null}
+                />
                 <Card
                     label={t("studies.lyon.label")}
                     link="https://www.univ-lyon1.fr/"

@@ -1,25 +1,19 @@
 import Card from "@/components/ui/card";
 import { getI18n } from "@/locales/server";
+import { getR2ImageUrl } from "@/utils/constants";
 
 const arguImage = {
-    src: "/images/AR_notext.png",
+    src: getR2ImageUrl("logos/arguai.png"),
     alt: "Argu Ai",
     width: 50,
     height: 20,
 };
 
 const leitlearnImage = {
-    src: "/images/LeitlearnSocial.png",
+    src: getR2ImageUrl("logos/leitlearn.webp"),
     alt: "leitlearn",
     width: 30,
     height: 30,
-}
-
-const btpImage = {
-    src: "/images/btp_logo.png",
-    alt: "btp logo",
-    width: 48,
-    height: 48,
 }
 
 export default async function Project() {
@@ -38,16 +32,6 @@ export default async function Project() {
                     date={t("projects.leitlearn.date")}
                     localisation={null}
                     description={t("projects.leitlearn.description")}
-                />
-                <Card
-                    label="project"
-                    link={t("projects.btp.link")}
-                    title={t("projects.btp.title")}
-                    image={btpImage}
-                    organisation={null}
-                    date={t("projects.btp.date")}
-                    localisation={null}
-                    description={t("projects.btp.description")}
                 />
                 <Card
                     label="project"

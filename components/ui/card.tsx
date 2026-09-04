@@ -14,6 +14,7 @@ interface CardProps {
         width: number,
         height: number,
     } | null;
+    imageClassName?: string;
     organisation: string | null;
     date: string | null;
     localisation: string | null;
@@ -27,10 +28,14 @@ const iconMap: Record<CardProps['label'], JSX.Element> = {
 const getIcon = (label: CardProps['label']) => iconMap[label] ??
     <FaExternalLinkAlt className={className} fontSize={15}/>;
 
-export default function Card({label, link, title, image, organisation, date, localisation, description}: CardProps) {
+export default function Card({label, link, title, image, imageClassName, organisation, date, localisation, description}: CardProps) {
+    const isExternal = link.startsWith("http");
+
     return (
         <>
             <Link href={link}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   className="active:scale-95 relative flex w-full group transition duration-300 ease-in-out hover:border-[var(--main-color)] rounded-[.5rem] border-2 border-solid border-[var(--border-gray)] p-4 mb-5">
                 {(image && (
                     <Image
@@ -38,7 +43,7 @@ export default function Card({label, link, title, image, organisation, date, loc
                         alt={image.alt}
                         width={image.width}
                         height={image.height}
-                        className="w-8 h-8 sm:w-12 sm:h-12 rounded-[.5rem]"
+                        className={imageClassName ?? "w-8 h-8 sm:w-12 sm:h-12 rounded-[.5rem] object-contain"}
                     />
 
                 ))}

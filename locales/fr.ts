@@ -28,6 +28,13 @@ export default {
 
     studies: {
         title: "Études",
+        cpe: {
+            label: "CPE Lyon",
+            title: "Diplôme d'ingénieur informatique",
+            organisation: "CPE Lyon",
+            date: "2025 - 2028",
+            location: "Villeurbanne, France",
+        },
         lyon: {
             label: "Université Lyon 1",
             title: "BUT Informatique",
@@ -50,12 +57,6 @@ export default {
             link: "/project/leitlearn",
             date: "2025",
             description: "Leitlearn est une plateforme d'apprentissage en ligne permettant aux utilisateurs d'acquérir des connaissances en utilisant des flashcards."
-        },
-        btp: {
-            title: "Gestion BTP",
-            link: "/project/btp",
-            date: "2025",
-            description: "Le projet BTP est un site web destiné aux entreprises du secteur du bâtiment, leur permettant de gérer au même endroit leurs employés, leurs chantiers et leur matériel."
         }
     },
 
@@ -85,6 +86,11 @@ export default {
         error: {
             subTitle: "Veuillez me contacter plus tard.",
             message: "Pour éviter le spam de messages, vous pourrez me contacter à nouveau dans une heure.",
+            button: "Je comprends",
+        },
+        serverError: {
+            subTitle: "Une erreur est survenue.",
+            message: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer plus tard.",
             button: "Je comprends",
         },
         success: {
@@ -126,17 +132,5 @@ export default {
             p2: "Afin de structurer efficacement notre travail en équipe, nous avons mis en place une méthodologie agile. Chaque tâche était définie à travers la création de tickets, puis développée dans une branche dédiée via une pull request. Chaque fonctionnalité faisait ensuite l’objet d’une relecture de code par un autre membre de l’équipe avant d’être intégrée, ce qui a permis d’assurer la qualité du projet tout en favorisant les échanges techniques et la montée en compétences collective.",
         },
         team: "L'équipe"
-    },
-    btp: {
-        intro: "Le projet BTP est un site web destiné aux entreprises du secteur du bâtiment et des travaux publics. Il a pour objectif de centraliser la gestion des ressources d’une entreprise sur une seule et même plateforme. Grâce à cet outil, les utilisateurs peuvent gérer efficacement leurs employés, suivre l’avancement de leurs chantiers, et contrôler l’utilisation du matériel. Ce projet répond à un besoin réel de simplification des processus internes dans le milieu du BTP, où la coordination des équipes, des équipements et des projets est essentielle. En modernisant une application existante, nous avons cherché à proposer une solution plus intuitive, plus performante et mieux adaptée aux besoins métiers actuels.",
-        s1: {
-            title: "Contexte du projet",
-            p1: "Ce projet académique a été réalisé dans le cadre de notre formation, en équipe de 4 personnes. L’objectif principal était de reprendre un logiciel existant utilisé dans le secteur du BTP, afin de l’analyser, de corriger ses dysfonctionnements et d’en améliorer l’ergonomie, les fonctionnalités et la structure technique. Cette démarche nous a permis de travailler sur un cas concret de refonte applicative, mêlant reprise de code, compréhension des besoins métiers et collaboration en équipe.",
-        },
-        s2: {
-            title: "Mise en œuvre technique",
-            p1: "L’application initiale était très difficile à utiliser : l’interface utilisateur était peu intuitive, le design dépassé, et l’architecture technique peu maintenable. Face à ce constat, nous avons décidé de repartir de zéro. Cela a impliqué une refonte complète du design, la restructuration du schéma de base de données, et le développement d’une nouvelle application web en utilisant le framework Symfony. Pour faciliter le déploiement et garantir un environnement de développement homogène entre les membres de l’équipe, nous avons également dockerisé l’application. Ce choix nous a permis de gagner en efficacité et en portabilité tout au long du projet.",
-            p2: "Nous avons adopté une méthode agile, en organisant notre travail sous forme de sprints hebdomadaires. À chaque début de sprint, nous définissions ensemble les objectifs à atteindre, puis répartissions les tâches entre les membres de l’équipe selon les compétences et les disponibilités. Des points réguliers nous ont permis de suivre l’avancement, de nous entraider en cas de blocage, et d’ajuster notre organisation si nécessaire. Cette approche nous a permis de maintenir un bon rythme de développement tout en assurant la qualité du produit final."
-        }
     }
 } as const;

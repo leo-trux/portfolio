@@ -40,7 +40,7 @@ export default function Modal({image, title, subTitle, message, buttonLabel, isO
                 animate={{y: 0, opacity: 1}}
                 exit={{y: 100, opacity: 0}}
                 transition={{duration: 0.3, ease: "easeOut"}}
-                className="w-150 z-60 bg-white h-125 bg-red-200 rounded-xl"
+                className="w-150 z-[60] bg-white h-125 rounded-xl"
             >
                 <div className="relative flex p-5 border-b border-[var(--border-gray)] items-center">
                     <span

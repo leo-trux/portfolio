@@ -1,4 +1,4 @@
-@import "../../node_modules/tailwindcss";
+@use "../../node_modules/tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -30,7 +30,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'RM Neue', sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 .active {

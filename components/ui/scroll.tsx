@@ -13,16 +13,16 @@ export default function ScrollToTop() {
         };
 
         const hideScrollButton = () => {
-            if (window.innerWidth < 950) {
-                setHide(true);
-            }
+            setHide(window.innerWidth < 950);
         }
 
+        hideScrollButton();
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", hideScrollButton);
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", hideScrollButton);
         };
     }, []);
 

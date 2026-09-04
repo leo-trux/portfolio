@@ -10,6 +10,8 @@ export default function Team({ isAdrian }: TeamProps) {
     return (
         <div className="flex relative h-30">
             <Link
+                target="_blank"
+                rel="noopener noreferrer"
                 href='https://www.linkedin.com/in/leo-trux/'
                 className="absolute z-40 rounded-[4rem] cursor-pointer transition duration-300 ease-in-out hover:border-[var(--main-color)] border-2 border-[var(--border-gray)]"
             >
@@ -23,6 +25,8 @@ export default function Team({ isAdrian }: TeamProps) {
                 </Image>
             </Link>
             <Link
+                target="_blank"
+                rel="noopener noreferrer"
                 href='https://www.linkedin.com/in/kilianpeyron/'
                 className="absolute z-30 left-15 sm:left-25 rounded-[4rem] cursor-pointer transition duration-300 ease-in-out hover:border-[var(--main-color)] border-2 border-[var(--border-gray)]"
             >
@@ -36,6 +40,8 @@ export default function Team({ isAdrian }: TeamProps) {
                 </Image>
             </Link>
             <Link
+                target="_blank"
+                rel="noopener noreferrer"
                 href='https://www.linkedin.com/in/aiman-manchout/'
                 className="absolute z-20 rounded-[4rem] left-30 sm:left-50 cursor-pointer transition duration-300 ease-in-out hover:border-[var(--main-color)] border-2 border-[var(--border-gray)]"
             >
@@ -50,6 +56,8 @@ export default function Team({ isAdrian }: TeamProps) {
             </Link>
             {isAdrian && (
                 <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href='https://www.linkedin.com/in/adrian-rabian-0455a326b/'
                     className="absolute z-10 rounded-[4rem] left-45 sm:left-75 cursor-pointer transition duration-300 ease-in-out hover:border-[var(--main-color)] border-2 border-[var(--border-gray)]"
                 >

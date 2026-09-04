@@ -27,6 +27,13 @@ export default {
 
     studies: {
         title: "Studies",
+        cpe: {
+            label: "CPE Lyon",
+            title: "Engineering degree in Computer Science",
+            organisation: "CPE Lyon",
+            date: "2025 - 2028",
+            location: "Villeurbanne, France",
+        },
         lyon: {
             label: "University Lyon 1",
             title: "Bachelor’s degree in Computer Science",
@@ -49,12 +56,6 @@ export default {
             link: "/project/leitlearn",
             date: "2025",
             description: "Leitlearn is an e-learning platform that enables users to acquire knowledge using flashcards."
-        },
-        btp: {
-            title: "Construction management",
-            link: "/project/btp",
-            date: "2025",
-            description: "The construction management project is a website designed for companies in the construction sector, enabling them to manage their employees, sites and equipment from a single location."
         }
     },
 
@@ -85,6 +86,11 @@ export default {
         error: {
             subTitle: "Please contact me later.",
             message: "To avoid message spamming, you will be able to contact me again in one hour.",
+            button: "I understand",
+        },
+        serverError: {
+            subTitle: "Something went wrong.",
+            message: "An error occurred while sending your message. Please try again later.",
             button: "I understand",
         },
         success: {
@@ -126,17 +132,5 @@ export default {
             p2: "To effectively organize our teamwork, we adopted an agile methodology. Each task was defined through the creation of tickets, then developed in a dedicated branch via a pull request. Every feature was then reviewed by another team member before being merged, which helped ensure the project’s quality while fostering technical exchange and collective skill development.",
         },
         team: "The Team"
-    },
-    btp: {
-        intro: "The BTP project is a web application designed for companies in the construction and public works sector. Its main goal is to centralize the management of a company's resources on a single platform. With this tool, users can efficiently manage their employees, monitor the progress of their construction sites, and control the use of their equipment. This project addresses a real need to simplify internal processes in the construction industry, where the coordination of teams, equipment, and projects is essential. By modernizing an existing application, we aimed to deliver a more intuitive, efficient, and business-oriented solution.",
-        s1: {
-            title: "Project Context",
-            p1: "This academic project was carried out as part of our training, in a team of four. The main objective was to take over an existing software used in the construction sector, analyze it, fix its issues, and improve its interface, features, and technical structure. This approach allowed us to work on a real-world application refactoring case, combining code review, business need analysis, and collaborative development."
-        },
-        s2: {
-            title: "Technical Implementation",
-            p1: "The original application was very difficult to use: the user interface was unintuitive, the design outdated, and the technical architecture hard to maintain. Faced with this situation, we decided to start from scratch. This involved a complete redesign of the UI, restructuring the database schema, and building a brand-new web application using the Symfony framework. To simplify deployment and ensure a consistent development environment across the team, we also containerized the application using Docker. This choice helped us improve both development efficiency and portability throughout the project.",
-            p2: "We followed an agile methodology, organizing our work into weekly sprints. At the start of each sprint, we collectively defined the goals to achieve and assigned tasks based on each member’s skills and availability. Regular check-ins allowed us to track progress, help each other in case of blockers, and adjust our organization as needed. This approach helped us maintain a steady development pace while ensuring a high-quality final product."
-        }
     }
 } as const;

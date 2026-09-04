@@ -13,10 +13,8 @@ export async function POST(request: NextRequest) {
         return Response.json("Please send your next message in one hour.", {status: 429});
     }
 
-    storeIp(ip)
-
     if (!email) {
-        return Response.json("Error with .env email");
+        return Response.json("Error with .env email", {status: 500});
     }
 
     if (!dataForm.email || !dataForm.name || !dataForm.message) {
@@ -35,6 +33,7 @@ export async function POST(request: NextRequest) {
             return Response.json({error}, {status: 500});
         }
 
+        storeIp(ip)
         return Response.json(data);
     } catch (error) {
         return Response.json({error}, {status: 500});

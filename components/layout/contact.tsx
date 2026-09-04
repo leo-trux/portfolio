@@ -23,7 +23,7 @@ export default function Contact() {
     const t = useScopedI18n('form');
     const tm = useScopedI18n('modal');
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [errorType, setErrorType] = useState<"rateLimit" | "server" | null>(null);
     const [success, setSuccess] = useState(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -58,7 +58,7 @@ export default function Contact() {
 
     const onSubmit = async (data: FormSchema) => {
         setIsLoading(true);
-        setError(false);
+        setErrorType(null);
 
         try {
             const response = await fetch("/api/resend", {
@@ -70,16 +70,17 @@ export default function Contact() {
             if (response.ok) {
                 setSuccess(true);
             } else {
-                setError(true);
+                setErrorType(response.status === 429 ? "rateLimit" : "server");
             }
-
+            setIsOpen(true);
         } catch (error) {
             if (error instanceof Error) {
                 console.error(error);
             }
+            setErrorType("server");
+            setIsOpen(true);
         } finally {
             setIsLoading(false);
-            setIsOpen(true);
         }
     };
 
@@ -88,7 +89,7 @@ export default function Contact() {
     };
 
     const closeModal = () => {
-        setError(false);
+        setErrorType(null);
         setSuccess(false);
         setIsOpen(false);
     }
@@ -96,12 +97,21 @@ export default function Contact() {
     return (
         <>
             <form className="relative" onSubmit={handleSubmit(onSubmit)}>
-                {error && (<Modal
+                {errorType === "rateLimit" && (<Modal
                     image={errorImage}
                     title={tm('title')}
                     subTitle={tm('error.subTitle')}
                     message={tm('error.message')}
                     buttonLabel={tm('error.button')}
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                />)}
+                {errorType === "server" && (<Modal
+                    image={errorImage}
+                    title={tm('title')}
+                    subTitle={tm('serverError.subTitle')}
+                    message={tm('serverError.message')}
+                    buttonLabel={tm('serverError.button')}
                     isOpen={isOpen}
                     closeModal={closeModal}
                 />)}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {IoMdClose} from "react-icons/io";
 
 interface TextareaProps {
@@ -12,15 +12,10 @@ interface TextareaProps {
 }
 
 export default function Textarea({id, name, label, isError, value = "", resetSpecificField, onChange, ...register}: TextareaProps) {
-    const [hasValue, setHasValue] = useState<boolean>(false);
     const [changeBg, setChangeBg] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>(value);
     const [displayIcon, setDisplayIcon] = useState<boolean>(false);
-
-    useEffect(() => {
-        setHasValue(inputValue !== "");
-    }, [inputValue]);
-
+    const hasValue = inputValue !== "";
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInputValue(e.target.value);
@@ -41,7 +36,6 @@ export default function Textarea({id, name, label, isError, value = "", resetSpe
 
     const removeValue= () => {
         resetSpecificField("message");
-        setHasValue(false);
         setInputValue("");
     }
 

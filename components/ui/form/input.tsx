@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {IoMdClose} from "react-icons/io";
 
 interface InputProps {
@@ -13,13 +13,9 @@ interface InputProps {
 }
 
 export default function Input({id, name, type, label, isError, value = "", resetSpecificField, onChange, ...register}: InputProps) {
-    const [hasValue, setHasValue] = useState<boolean>(value !== "");
     const [inputValue, setInputValue] = useState<string>(value);
     const [displayIcon, setDisplayIcon] = useState<boolean>(false);
-
-    useEffect(() => {
-        setHasValue(inputValue !== "");
-    }, [inputValue]);
+    const hasValue = inputValue !== "";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -34,7 +30,6 @@ export default function Input({id, name, type, label, isError, value = "", reset
 
     function removeValue(): void {
         resetSpecificField(id === "name" ? "name" : "email");
-        setHasValue(false);
         setInputValue("");
     }
 

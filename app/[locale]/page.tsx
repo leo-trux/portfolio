@@ -2,13 +2,30 @@ import SelectLocale from "@/components/ui/selectLocale";
 import Button from "@/components/ui/button";
 import Career from "@/components/layout/career";
 import Project from "@/components/layout/project";
-import { getI18n, getCurrentLocale } from "@/locales/server";
+import { getI18n, setStaticParamsLocale } from "@/locales/server";
 import Footer from "@/components/layout/footer";
 import React from "react";
+import type {Metadata} from "next";
 
-export default async function Home() {
+type PageProps = {
+    params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({params}: PageProps): Promise<Metadata> {
+    const {locale} = await params;
+    setStaticParamsLocale(locale);
     const t = await getI18n();
-    const locale: "en" | "fr" = await getCurrentLocale();
+
+    return {
+        title: "Léo TRUX - Portfolio",
+        description: t("home.intro"),
+    };
+}
+
+export default async function Home({params}: PageProps) {
+    const {locale} = await params;
+    setStaticParamsLocale(locale);
+    const t = await getI18n();
 
     return (
         <>
