@@ -10,12 +10,11 @@ interface ButtonProps {
     link: string;
 }
 
-const iconsStyle = "transition duration-300 ease-in-out group-hover:text-[var(--main-color)]";
 const iconsMap: Record<ButtonProps['icon'], JSX.Element> = {
-    github: <FaGithubSquare className={iconsStyle} fontSize={30} />,
-    linkedin: <FaLinkedin className={iconsStyle} fontSize={30} />,
-    cv: <PiReadCvLogo className={iconsStyle} fontSize={30} />,
-    mail: <MdOutlineEmail className={iconsStyle} fontSize={30} />,
+    github: <FaGithubSquare fontSize={19} />,
+    linkedin: <FaLinkedin fontSize={19} />,
+    cv: <PiReadCvLogo fontSize={19} />,
+    mail: <MdOutlineEmail fontSize={19} />,
 };
 
 export default function Button({ label, icon, link }: ButtonProps) {
@@ -26,9 +25,9 @@ export default function Button({ label, icon, link }: ButtonProps) {
         <a href={link}
            target={isExternal ? "_blank" : undefined}
            rel={isExternal ? "noopener noreferrer" : undefined}
-           className="active:scale-90 group transition duration-300 ease-in-out hover:border-[var(--main-color)] flex items-center p-2 sm:p-3 md:p-3 justify-center w-45 rounded-[.5rem] border-2 border-solid border-[var(--border-gray)] cursor-pointer mr-5">
+           className="active:scale-95 inline-flex items-center gap-2 px-3 py-2 rounded-[.5rem] text-[var(--gray)] transition-colors duration-300 ease-in-out hover:text-[var(--main-color)] hover:bg-[var(--form-bg)] cursor-pointer">
             {selectedIcon}
-            <span className="ml-3 mt-1 hidden sm:flex font-semibold transition duration-300 ease-in-out group-hover:text-[var(--main-color)]">
+            <span className="text-sm font-medium">
                 {label}
             </span>
         </a>

@@ -39,7 +39,7 @@ export default function Input({id, name, type, label, isError, value = "", reset
                 id={id}
                 value={inputValue}
                 onChange={handleChange}
-                className={` ${isError ? "border-[var(--form-error)]" : "border-transparent border-[var(--main-color)] "} z-20 relative w-full h-15 transition duration-300 ease-in-out border-2 border-solid focus:border-2 focus:bg-white focus:border-[var(--main-color)] pt-4 pl-4 pr-10 rounded-[.5rem] outline-none bg-[var(--form-bg)]`}
+                className={` ${isError ? "border-[var(--form-error)]" : "border-transparent border-[var(--main-color)] "} z-20 relative w-full h-15 transition duration-300 ease-in-out border-2 border-solid focus:border-2 focus:bg-[var(--background)] focus:border-[var(--main-color)] pt-4 pl-4 pr-10 rounded-[.5rem] outline-none bg-[var(--form-bg)] text-[var(--foreground)]`}
                 name={name}
                 type={type}
                 onFocus={() => setDisplayIcon(true)}

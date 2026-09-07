@@ -3,7 +3,7 @@ import { getI18n } from "@/locales/server";
 import { getR2ImageUrl } from "@/utils/constants";
 
 const arguImage = {
-    src: getR2ImageUrl("logos/arguai.png"),
+    src: getR2ImageUrl("logos/arguai.jpg"),
     alt: "Argu Ai",
     width: 50,
     height: 20,
@@ -12,6 +12,14 @@ const arguImage = {
 const leitlearnImage = {
     src: getR2ImageUrl("logos/leitlearn.webp"),
     alt: "leitlearn",
+    width: 30,
+    height: 30,
+}
+
+const mtCompoImage = {
+    src: getR2ImageUrl("logos/mtcompo.svg"),
+    darkSrc: getR2ImageUrl("logos/mtcompo-light.svg"),
+    alt: "Mt Compo",
     width: 30,
     height: 30,
 }
@@ -25,17 +33,17 @@ export default async function Project() {
             <div className="flex flex-col gap-2">
                 <Card
                     label="project"
-                    link={t("projects.leitlearn.link")}
-                    title={t("projects.leitlearn.title")}
-                    image={leitlearnImage}
+                    link="https://micheltrux.com"
+                    title={t("projects.mt_compo.title")}
+                    image={mtCompoImage}
                     organisation={null}
-                    date={t("projects.leitlearn.date")}
+                    date={t("projects.mt_compo.date")}
                     localisation={null}
-                    description={t("projects.leitlearn.description")}
+                    description={t("projects.mt_compo.description")}
                 />
                 <Card
                     label="project"
-                    link={t("projects.argu_ai.link")}
+                    link="https://github.com/leo-trux/arguAI"
                     title={t("projects.argu_ai.title")}
                     image={arguImage}
                     organisation={null}
@@ -43,7 +51,16 @@ export default async function Project() {
                     localisation={null}
                     description={t("projects.argu_ai.description")}
                 />
-
+                <Card
+                    label="project"
+                    link="https://github.com/kilianpeyron/leitlearn-legacy"
+                    title={t("projects.leitlearn.title")}
+                    image={leitlearnImage}
+                    organisation={null}
+                    date={t("projects.leitlearn.date")}
+                    localisation={null}
+                    description={t("projects.leitlearn.description")}
+                />
             </div>
         </section>
     );

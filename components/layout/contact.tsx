@@ -6,27 +6,15 @@ import Input from "@/components/ui/form/input";
 import Textarea from "@/components/ui/form/textarea";
 import Button from "@/components/ui/form/button";
 import {useScopedI18n} from "@/locales/client";
-import React, {useState} from "react";
-import Modal from "@/components/ui/modal";
-
-const successImage = {
-    src: "/images/email.webp",
-    alt: "email",
-};
-
-const errorImage = {
-    src: "/images/clock.webp",
-    alt: "clock",
-}
+import React, {useCallback, useState} from "react";
+import {AnimatePresence} from "framer-motion";
+import Toast, {ToastType} from "@/components/ui/toast";
 
 export default function Contact() {
     const t = useScopedI18n('form');
-    const tm = useScopedI18n('modal');
+    const tt = useScopedI18n('toast');
     const [isLoading, setIsLoading] = useState(false);
-    const [errorType, setErrorType] = useState<"rateLimit" | "server" | null>(null);
-    const [success, setSuccess] = useState(false);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
+    const [toast, setToast] = useState<{ id: number; type: ToastType } | null>(null);
 
     const formSchema = z.object({
         name: z.string().min(3, {
@@ -56,9 +44,14 @@ export default function Contact() {
         }
     });
 
+    const showToast = (type: ToastType) => {
+        setToast((prev) => ({id: (prev?.id ?? 0) + 1, type}));
+    };
+
+    const closeToast = useCallback(() => setToast(null), []);
+
     const onSubmit = async (data: FormSchema) => {
         setIsLoading(true);
-        setErrorType(null);
 
         try {
             const response = await fetch("/api/resend", {
@@ -68,17 +61,15 @@ export default function Contact() {
             });
 
             if (response.ok) {
-                setSuccess(true);
+                showToast("success");
             } else {
-                setErrorType(response.status === 429 ? "rateLimit" : "server");
+                showToast(response.status === 429 ? "rateLimit" : "server");
             }
-            setIsOpen(true);
         } catch (error) {
             if (error instanceof Error) {
                 console.error(error);
             }
-            setErrorType("server");
-            setIsOpen(true);
+            showToast("server");
         } finally {
             setIsLoading(false);
         }
@@ -88,42 +79,15 @@ export default function Contact() {
         setValue(field, "");
     };
 
-    const closeModal = () => {
-        setErrorType(null);
-        setSuccess(false);
-        setIsOpen(false);
-    }
+    const toastCopy: Record<ToastType, { title: string; message: string }> = {
+        success: {title: tt('success.title'), message: tt('success.message')},
+        rateLimit: {title: tt('error.title'), message: tt('error.message')},
+        server: {title: tt('serverError.title'), message: tt('serverError.message')},
+    };
 
     return (
         <>
             <form className="relative" onSubmit={handleSubmit(onSubmit)}>
-                {errorType === "rateLimit" && (<Modal
-                    image={errorImage}
-                    title={tm('title')}
-                    subTitle={tm('error.subTitle')}
-                    message={tm('error.message')}
-                    buttonLabel={tm('error.button')}
-                    isOpen={isOpen}
-                    closeModal={closeModal}
-                />)}
-                {errorType === "server" && (<Modal
-                    image={errorImage}
-                    title={tm('title')}
-                    subTitle={tm('serverError.subTitle')}
-                    message={tm('serverError.message')}
-                    buttonLabel={tm('serverError.button')}
-                    isOpen={isOpen}
-                    closeModal={closeModal}
-                />)}
-                {success && (<Modal
-                    image={successImage}
-                    title={tm('title')}
-                    subTitle={tm('success.subTitle')}
-                    message={tm('success.message')}
-                    buttonLabel={tm('success.button')}
-                    isOpen={isOpen}
-                    closeModal={closeModal}
-                />)}
                 <div className="flex w-full gap-2">
                     <div className="flex flex-col w-1/2 mb-2">
                         <Input id="name"
@@ -160,6 +124,17 @@ export default function Contact() {
                     className={` ${errors.message ? "opacity-100" : "opacity-0"} text-[var(--form-error)] ml-1 text-xs mb-1 absolute mt-1 h-2`}>{errors.message?.message}</span>
                 <Button id="button" name="button" label={t("fields.submit")} isLoading={isLoading}/>
             </form>
+            <AnimatePresence>
+                {toast && (
+                    <Toast
+                        key={toast.id}
+                        type={toast.type}
+                        title={toastCopy[toast.type].title}
+                        message={toastCopy[toast.type].message}
+                        onClose={closeToast}
+                    />
+                )}
+            </AnimatePresence>
         </>
     );
 }

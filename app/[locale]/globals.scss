@@ -1,16 +1,20 @@
 @use "../../node_modules/tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   --background: #ffffff;
+  --card-bg: #ffffff;
   --foreground: #0f2145;
   --main-color: #3e31fa;
+  --main-color-2: #825df6;
   --gray: #788398;
   --dark-gray: #5e6a83;
   --border-gray: #e1e5ea;
-  --hover: rgba(255, 255, 255, 1);
   --form-bg: #edeff2;
-  --form-error : #CA024F;
-
+  --form-error: #CA024F;
+  --shadow-color: 15 23 42;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -20,22 +24,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: white;
-    --foreground: #0f2145;
-  }
+:root[data-theme="dark"] {
+  --background: #0a0e1a;
+  --card-bg: #111729;
+  --foreground: #eef1f8;
+  --main-color: #7b74ff;
+  --main-color-2: #9b6dfa;
+  --gray: #96a1bf;
+  --dark-gray: #c3cbe0;
+  --border-gray: #232a42;
+  --form-bg: #141a2e;
+  --form-error: #ff6b93;
+  --shadow-color: 0 0 0;
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
-}
-
-.active {
-  background: var(--main-color);
-  color: #ffffff;
+  transition: background-color .3s ease, color .3s ease;
 }
 
 .loader {
@@ -52,8 +60,8 @@ img {
 }
 
 @keyframes l5 {
-  0%  {box-shadow: 20px 0 var(--main-color), -20px 0 #0002;background: var(--main-color) }
-  33% {box-shadow: 20px 0 var(--main-color), -20px 0 #0002;background: #0002}
-  66% {box-shadow: 20px 0 #0002,-20px 0 var(--main-color); background: #0002}
-  100%{box-shadow: 20px 0 #0002,-20px 0 var(--main-color); background: var(--main-color) }
+  0%  {box-shadow: 20px 0 var(--main-color), -20px 0 var(--border-gray);background: var(--main-color) }
+  33% {box-shadow: 20px 0 var(--main-color), -20px 0 var(--border-gray);background: var(--border-gray)}
+  66% {box-shadow: 20px 0 var(--border-gray),-20px 0 var(--main-color); background: var(--border-gray)}
+  100%{box-shadow: 20px 0 var(--border-gray),-20px 0 var(--main-color); background: var(--main-color) }
 }
