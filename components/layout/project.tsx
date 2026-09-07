@@ -24,6 +24,13 @@ const mtCompoImage = {
     height: 30,
 }
 
+const haliImage = {
+    src: getR2ImageUrl("logos/hal.png"),
+    alt: "HALiance",
+    width: 30,
+    height: 30,
+}
+
 export default async function Project() {
     const t = await getI18n();
 
@@ -40,6 +47,16 @@ export default async function Project() {
                     date={t("projects.mt_compo.date")}
                     localisation={null}
                     description={t("projects.mt_compo.description")}
+                />
+                <Card
+                    label="project"
+                    link="https://www.ccsd.cnrs.fr/haliance/"
+                    title={t("projects.haliance.title")}
+                    image={haliImage}
+                    organisation={null}
+                    date={t("projects.haliance.date")}
+                    localisation={null}
+                    description={t("projects.haliance.description")}
                 />
                 <Card
                     label="project"

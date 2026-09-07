@@ -59,8 +59,13 @@ export default {
         },
         mt_compo: {
             title: "Mt Compo",
-            date: "2026",
+            date: "2026 - Aujourd'hui",
             description: "Mt Compo est une plateforme de vente de partitions en ligne."
+        },
+        haliance: {
+            title: "Projet HALiance",
+            date: "2024 - Aujourd'hui",
+            description: "HALiance est un projet structurant porté par le CCSD visant à moderniser l'infrastructure et les services de HAL, l'archive ouverte française de la recherche scientifique."
         }
     },
 

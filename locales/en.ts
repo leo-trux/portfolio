@@ -58,8 +58,13 @@ export default {
         },
         mt_compo: {
             title: "Mt Compo",
-            date: "2026",
+            date: "2026 - Present",
             description: "Mt Compo is an online platform for selling sheet music."
+        },
+        haliance: {
+            title: "HALiance Project",
+            date: "2024 - Present",
+            description: "HALiance is a structuring project led by CCSD to modernize the infrastructure and services of HAL, France's open archive for scientific research."
         }
     },
 
