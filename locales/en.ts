@@ -2,6 +2,7 @@ export default {
     home: {
         available_for_hire: "Available for hire",
         web_developer: "Developer.",
+        meta_description: "Fullstack developer (PHP/Symfony, Next.js), work-study at CCSD, completing an engineering degree at CPE Lyon.",
         intro: "Léo Trux, a work-study developer at CCSD, where I contribute to the HALiance project. I'm also completing an engineering degree in computer science and communication networks at CPE Lyon.",
         skills: "I have solid experience in PHP, particularly with the Symfony framework, and I'm broadening my skills with Docker and Next.js (React/TypeScript) to grow into other technologies.",
     },

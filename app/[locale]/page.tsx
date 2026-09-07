@@ -18,7 +18,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
     const t = await getI18n();
 
     const title = "Léo TRUX - Portfolio";
-    const description = t("home.intro");
+    const description = t("home.meta_description");
     const path = locale === "fr" ? "/fr" : "/en";
 
     return {

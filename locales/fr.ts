@@ -2,6 +2,7 @@ export default {
     home: {
         available_for_hire: "Disponible pour embauche",
         web_developer: "Développeur.",
+        meta_description: "Développeur fullstack (PHP/Symfony, Next.js) en alternance chez CCSD, prépare un diplôme d'ingénieur à CPE Lyon.",
         intro: "Léo Trux, développeur en alternance au CCSD, où je contribue au projet HALiance. Je prépare en parallèle un diplôme d'ingénieur en informatique et réseaux de communications à CPE Lyon.",
         skills: "J'ai une solide expérience en PHP, notamment avec le framework Symfony, et j'élargis mes compétences avec Docker et Next.js (React/TypeScript) pour monter en compétence sur d'autres technologies.",
     },
