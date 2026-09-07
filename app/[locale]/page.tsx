@@ -6,6 +6,7 @@ import { getI18n, setStaticParamsLocale } from "@/locales/server";
 import Footer from "@/components/layout/footer";
 import React from "react";
 import type {Metadata} from "next";
+import {getR2ImageUrl} from "@/utils/constants";
 
 type PageProps = {
     params: Promise<{ locale: string }>;
@@ -16,9 +17,33 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
     setStaticParamsLocale(locale);
     const t = await getI18n();
 
+    const title = "Léo TRUX - Portfolio";
+    const description = t("home.intro");
+    const path = locale === "fr" ? "/fr" : "/en";
+
     return {
-        title: "Léo TRUX - Portfolio",
-        description: t("home.intro"),
+        title,
+        description,
+        alternates: {
+            canonical: path,
+            languages: {
+                fr: "/fr",
+                en: "/en",
+            },
+        },
+        openGraph: {
+            title,
+            description,
+            url: path,
+            siteName: "Léo Trux",
+            locale: locale === "fr" ? "fr_FR" : "en_US",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+        },
     };
 }
 
@@ -27,8 +52,24 @@ export default async function Home({params}: PageProps) {
     setStaticParamsLocale(locale);
     const t = await getI18n();
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Léo Trux",
+        jobTitle: t("home.web_developer"),
+        url: "https://leotrux.fr",
+        sameAs: [
+            "https://github.com/leo-trux",
+            "https://www.linkedin.com/in/leo-trux/",
+        ],
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+            />
             <SelectLocale/>
             {/*<div className="flex flex-row items-center mt-20 mb-5">*/}
             {/*    <div className="flex relative w-[24px] h-[24px]">*/}
@@ -46,7 +87,7 @@ export default async function Home({params}: PageProps) {
             <div className="flex flex-row items-center gap-1 -ml-3 w-full mt-8 sm:mt-10">
                 <Button label="Github" icon="github" link="https://github.com/leo-trux"/>
                 <Button label="Linkedin" icon="linkedin" link="https://www.linkedin.com/in/leo-trux/"/>
-                <Button label="CV" icon="cv" link={"/docs/truxleo_cv_" + locale + ".pdf"}/>
+                <Button label="CV" icon="cv" link={getR2ImageUrl(`medias/truxleo_cv_${locale}.pdf`)}/>
             </div>
             <p className="mt-8 sm:mt-10 text-[var(--gray)]">{t('home.intro')}</p>
             <p className="mt-4 text-[var(--gray)]">{t('home.skills')}</p>

@@ -14,9 +14,8 @@ export default async function Footer() {
                 {t("footer.contact_info")}
             </span>
             <Contact />
-            <div className="relative flex flex-col sm:flex-row items-center w-full mt-20 mb-5 gap-2">
+            <div className="relative flex sm:flex-row items-center w-full mt-20 mb-5 gap-2">
                 <span className="text-[var(--gray)]">{t("footer.copyright")}</span>
-                <span className="text-[var(--gray)]">{t("footer.tech_stack")}</span>
             </div>
         </div>
     );

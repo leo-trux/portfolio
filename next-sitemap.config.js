@@ -5,4 +5,8 @@ module.exports = {
     changefreq: 'monthly',
     priority: 0.7,
     sitemapSize: 5000,
+    alternateRefs: [
+        {href: 'https://leotrux.fr/fr', hreflang: 'fr'},
+        {href: 'https://leotrux.fr/en', hreflang: 'en'},
+    ],
 };

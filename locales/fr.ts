@@ -1,7 +1,7 @@
 export default {
     home: {
         available_for_hire: "Disponible pour embauche",
-        web_developer: "Développeur web.",
+        web_developer: "Développeur.",
         intro: "Léo Trux, développeur en alternance au CCSD, où je contribue au projet HALiance. Je prépare en parallèle un diplôme d'ingénieur en informatique et réseaux de communications à CPE Lyon.",
         skills: "J'ai une solide expérience en PHP, notamment avec le framework Symfony, et j'élargis mes compétences avec Docker et Next.js (React/TypeScript) pour monter en compétence sur d'autres technologies.",
     },
@@ -66,8 +66,7 @@ export default {
     footer: {
         collaborate: "Me contacter",
         contact_info: "Vous pouvez me contacter par email en remplissant ce formulaire.",
-        copyright: "© 2025 - Léo Trux.",
-        tech_stack: "Développé avec Next.js, déployé avec Vercel.",
+        copyright: "© 2025 - Léo Trux",
     },
 
     form: {
@@ -95,7 +94,7 @@ export default {
         },
         success: {
             title: "Merci de m'avoir contacté !",
-            message: "Un email m'a été envoyé, je vous réponds au plus vite.",
+            message: "Un email m'a été envoyé.",
         },
     },
 } as const;
