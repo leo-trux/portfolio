@@ -1,3 +1,5 @@
+export const SITE_URL = "https://leotrux.fr"
+
 const R2_URL: string | undefined = process.env.NEXT_PUBLIC_R2_URL
 
 export const getR2ImageUrl: (path: string) => string = (path: string) => {

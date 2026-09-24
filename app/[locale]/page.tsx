@@ -6,7 +6,7 @@ import { getI18n, setStaticParamsLocale } from "@/locales/server";
 import Footer from "@/components/layout/footer";
 import React from "react";
 import type {Metadata} from "next";
-import {getR2ImageUrl} from "@/utils/constants";
+import {getR2ImageUrl, SITE_URL} from "@/utils/constants";
 
 type PageProps = {
     params: Promise<{ locale: string }>;
@@ -19,7 +19,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
 
     const title = "Léo TRUX - Portfolio";
     const description = t("home.meta_description");
-    const path = locale === "fr" ? "/fr" : "/en";
+    const path = `/${locale}`;
 
     return {
         title,
@@ -29,6 +29,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
             languages: {
                 fr: "/fr",
                 en: "/en",
+                "x-default": "/en",
             },
         },
         openGraph: {
@@ -57,10 +58,24 @@ export default async function Home({params}: PageProps) {
         "@type": "Person",
         name: "Léo Trux",
         jobTitle: t("home.web_developer"),
-        url: "https://leotrux.fr",
+        url: SITE_URL,
         sameAs: [
             "https://github.com/leo-trux",
             "https://www.linkedin.com/in/leo-trux/",
+        ],
+        worksFor: {
+            "@type": "Organization",
+            name: t("career.ccsd.organisation"),
+        },
+        alumniOf: [
+            {
+                "@type": "CollegeOrUniversity",
+                name: t("studies.cpe.organisation"),
+            },
+            {
+                "@type": "CollegeOrUniversity",
+                name: t("studies.lyon.organisation"),
+            },
         ],
     };
 

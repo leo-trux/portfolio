@@ -7,6 +7,7 @@ import React, {Suspense} from "react";
 import {Providers} from "@/app/[locale]/providers";
 import Loading from "@/app/[locale]/loading";
 import {getStaticParams, setStaticParamsLocale} from "@/locales/server";
+import {SITE_URL} from "@/utils/constants";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -19,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://leotrux.fr"),
+    metadataBase: new URL(SITE_URL),
     title: "Léo TRUX - Portfolio",
     description: "Léo Trux's portfolio, web developer from France.",
 };
