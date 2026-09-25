@@ -77,17 +77,21 @@ export default function Contact() {
 
             if (response.ok) {
                 showToast("success");
+            } else if (response.status === 429) {
+                // Rate limit is checked before Turnstile, so the token is still unused
+                showToast("rateLimit");
             } else {
-                showToast(response.status === 429 ? "rateLimit" : "server");
+                showToast("server");
+                setTurnstileResetKey((key) => key + 1);
             }
         } catch (error) {
             if (error instanceof Error) {
                 console.error(error);
             }
             showToast("server");
+            setTurnstileResetKey((key) => key + 1);
         } finally {
             setIsLoading(false);
-            setTurnstileResetKey((key) => key + 1);
         }
     };
 
