@@ -86,6 +86,8 @@ export default {
             name: "The name must contain at least 3 characters.",
             email: "Please enter a valid e-mail address.",
             message: "The message cannot be empty.",
+            nameTooLong: "The name cannot exceed 100 characters.",
+            messageTooLong: "The message cannot exceed 5000 characters.",
         }
     },
 

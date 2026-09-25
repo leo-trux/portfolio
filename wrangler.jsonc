@@ -34,5 +34,27 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
+	},
+	"kv_namespaces": [
+		// Stores contact form senders' IPs for one hour
+		{
+			"binding": "CONTACT_RATE_LIMIT_KV",
+			"id": "4ad14c2134c14093a7b5b18d83d0c483"
+		}
+	],
+	"ratelimits": [
+		// Burst protection on the contact endpoint (period must be 10 or 60 seconds)
+		// see https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
+		{
+			"name": "CONTACT_RATE_LIMITER",
+			"namespace_id": "1001",
+			"simple": {
+				"limit": 3,
+				"period": 60
+			}
+		}
+	],
+	"vars": {
+		"NEXT_PUBLIC_R2_URL": "https://media.leotrux.fr"
 	}
 }
